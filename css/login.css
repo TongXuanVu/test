@@ -231,6 +231,7 @@ body
     display: none;
 }
 
+/* ===== Toast Container ===== */
 .toast-container {
   position: fixed;
   bottom: 24px;
@@ -238,19 +239,20 @@ body
   z-index: 9999;
 }
 
+/* ===== Toast Base ===== */
 .toast {
   min-width: 320px;
-  background: linear-gradient(90deg, #28a745 60%, #218838 100%);
   border-radius: 14px;
-  box-shadow: 0 4px 24px rgba(40, 167, 69, 0.12), 0 1.5px 6px rgba(0,0,0,0.11);
+  color: #fff;
+  font-family: inherit;
+  box-shadow: 0 4px 24px rgba(40,167,69,0.12), 0 1.5px 6px rgba(0,0,0,0.11);
   border: none;
   opacity: 0;
   pointer-events: none;
   transform: translateY(30px) scale(0.98);
   transition: opacity 0.35s, transform 0.35s;
-  font-family: inherit;
-  color: #fff;
   overflow: hidden;
+  background: linear-gradient(90deg, #28a745 60%, #218838 100%);
 }
 
 .toast.show {
@@ -259,19 +261,20 @@ body
   transform: translateY(0) scale(1);
 }
 
+/* ===== Toast Success/Loading background ===== */
+.toast.loading {
+  background: linear-gradient(90deg, #17a2b8 60%, #138496 100%);
+}
+
+/* ===== Toast Header ===== */
 .toast-header {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 12px 20px 8px 20px;
   background: transparent;
-  border-bottom: none;
   border-radius: 14px 14px 0 0;
-}
-
-.toast-header .icon-success {
-  font-size: 22px;
-  margin-right: 4px;
+  border-bottom: none;
 }
 
 .toast-header strong {
@@ -282,6 +285,44 @@ body
   letter-spacing: 0.5px;
 }
 
+.toast-header .icon-success {
+  font-size: 22px;
+  margin-right: 4px;
+  display: inline-block;
+}
+
+.toast-header .icon-loading {
+  width: 22px;
+  height: 22px;
+  border: 3px solid #fff;
+  border-top: 3px solid #b2ebf2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 4px;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+/* ===== Toast Body ===== */
+.toast-body {
+  padding: 10px 20px 18px 56px;
+  font-size: 16px;
+  color: #fff;
+  position: relative;
+}
+
+.toast-body b, 
+.toast-body strong {
+  color: #ffe082; /* Vàng nhạt nổi bật */
+  font-weight: bold;
+}
+
+/* ===== Close Button ===== */
 .btn-close {
   background: transparent;
   border: none;
@@ -297,15 +338,3 @@ body
   opacity: 1;
 }
 
-.toast-body {
-  padding: 10px 20px 18px 56px;
-  font-size: 16px;
-  color: #fff;
-  position: relative;
-}
-
-.toast-body b, 
-.toast-body strong {
-  color: #ffe082; 
-  font-weight: bold;
-}
