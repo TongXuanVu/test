@@ -231,7 +231,7 @@ body
     display: none;
 }
 
-/* ===== Toast Container ===== */
+
 .toast-container {
   position: fixed;
   bottom: 24px;
@@ -239,7 +239,7 @@ body
   z-index: 9999;
 }
 
-/* ===== Toast Base ===== */
+
 .toast {
   min-width: 320px;
   border-radius: 14px;
@@ -261,12 +261,12 @@ body
   transform: translateY(0) scale(1);
 }
 
-/* ===== Toast Success/Loading background ===== */
+
 .toast.loading {
   background: linear-gradient(90deg, #17a2b8 60%, #138496 100%);
 }
 
-/* ===== Toast Header ===== */
+
 .toast-header {
   display: flex;
   align-items: center;
@@ -308,7 +308,7 @@ body
   100% { transform: rotate(360deg);}
 }
 
-/* ===== Toast Body ===== */
+
 .toast-body {
   padding: 10px 20px 18px 56px;
   font-size: 16px;
@@ -318,11 +318,10 @@ body
 
 .toast-body b, 
 .toast-body strong {
-  color: #ffe082; /* Vàng nhạt nổi bật */
+  color: #ffe082; 
   font-weight: bold;
 }
 
-/* ===== Close Button ===== */
 .btn-close {
   background: transparent;
   border: none;
