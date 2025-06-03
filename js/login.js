@@ -15,13 +15,24 @@ $(document).ready(function()
     });
 });
 
-function showToast(message, duration = 5000) {
-    const toast = document.getElementById('customToast');
-    const toastBody = document.getElementById('toastBody');
-    toastBody.textContent = message;
+function showSuccessToast(message, duration = 5000) {
+    const toast = document.getElementById('myToast');
+    toast.classList.remove('loading');
+    document.getElementById('toast-icon').innerHTML = '✔️';
+    document.getElementById('toast-title').textContent = 'Thành công';
+    document.getElementById('toast-body').textContent = message;
     toast.classList.add('show');
     if (toast.hideTimeout) clearTimeout(toast.hideTimeout);
     toast.hideTimeout = setTimeout(hideToast, duration);
+}
+
+function showLoadingToast(message = 'Vui lòng chờ trong giây lát...') {
+  const toast = document.getElementById('myToast');
+  toast.classList.add('loading');
+  document.getElementById('toast-icon').innerHTML = '<span class="icon-loading"></span>';
+  document.getElementById('toast-title').textContent = 'Đang xử lý...';
+  document.getElementById('toast-body').textContent = message;
+  toast.classList.add('show');
 }
 
 function hideToast() {
@@ -120,7 +131,7 @@ async function Send_SignUp() {
         }
 
         const data = { username, email, password};
-        showToast("Đang xử lý....", 60 * 1000); 
+        showLoadingToast();
     try {
         const response = await fetch("https://b6a62881-28fe-479b-b45b-27ced866329b-00-3ayo8cow7loyp.pike.replit.dev/api/sign_up", {
         method: "POST",
@@ -293,7 +304,7 @@ async function Send_SubmitResetPassword() {
     }
 
     const data = {username, email};
-    showToast("Đang xử lý....", 60 * 1000); 
+    showLoadingToast();
     try {
         const response = await fetch("https://b6a62881-28fe-479b-b45b-27ced866329b-00-3ayo8cow7loyp.pike.replit.dev/api/reset_password", {
         method: "POST",
@@ -369,7 +380,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   const msg = sessionStorage.getItem('message');
   if (msg) {
-    showToast(msg); 
+    showSuccessToast(msg); 
     sessionStorage.removeItem('message');
   }
 });
