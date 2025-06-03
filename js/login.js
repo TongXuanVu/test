@@ -36,7 +36,7 @@ function showLoadingToast(message = 'Vui lòng chờ trong giây lát...') {
 }
 
 function hideToast() {
-    const toast = document.getElementById('customToast');
+    const toast = document.getElementById('myToast');
     toast.classList.remove('show');
 }
 
@@ -129,7 +129,6 @@ async function Send_SignUp() {
             document.getElementById("error_message").textContent = "Password and password confirmation don't match."
             return
         }
-
         const data = { username, email, password};
         showLoadingToast();
     try {
