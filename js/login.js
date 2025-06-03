@@ -67,6 +67,7 @@ if(verify_form){
 const reset_password = document.getElementById("reset_password")
 if(reset_password){
     reset_password.addEventListener("click", function() {
+        document.getElementById("heading").textContent="Forgot your password"
         document.getElementById("SignIn_form").style.display = "none";
         document.getElementById("ResetPassword_form").style.display = "block";
         document.getElementById("return").style.display = "";
@@ -144,9 +145,9 @@ async function Send_SignUp() {
         }
 
         if (result.success) {
-            localStorage.setItem('username', username);
             document.getElementById("SignUp_form").style.display = "none";
             document.getElementById("verify_email_form").style.display = "block";
+            document.getElementById("message").innerHTML = `The verification code has been sent to email <br> <strong>${email}</strong>`;
         } else {
             alert("Registration Failed: " + result.message);
         }
