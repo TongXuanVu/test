@@ -12,7 +12,7 @@ function TextToImage() {
     }
     
     console.log(data)
-    fetch('https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev//api/texttoimage', {
+    fetch('https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev/api/texttoimage', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json' 
@@ -165,7 +165,7 @@ function getAllImages() {
             carousel.innerHTML = '';
 
             // Duyệt qua dữ liệu trả về và tạo các carousel-item
-            data.tts_data.forEach(item => {
+            data.ttall.forEach(item => {
                 const carouselItem = document.createElement('div');
                 carouselItem.className = 'carousel-item';
 
@@ -269,7 +269,7 @@ function getAllImages() {
                     let likes = parseInt(this.getAttribute('data-likes'));
 
                     // Gửi yêu cầu đến endpoint /api/tym
-                    fetch('https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev/api/tym', {
+                    fetch('https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev//api/tym', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
