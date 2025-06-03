@@ -96,14 +96,14 @@ function getUserImages() {
     // Giả sử type của bạn là "text_to_image"
     var type = "text_to_image";
 
-    (`https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev/api/get_data_user?username=${encodeURIComponent(username)}&type=${encodeURIComponent(type)}`, {
+    fetch(`https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev/api/get_data_user?username=${encodeURIComponent(username)}&type=${encodeURIComponent(type)}`, {
         method: 'GET'
     })
     .then(response => response.json())
     .then(jsonData => {
         console.log("Get tts_data response:", jsonData);
         if (!jsonData.success) {
-            console.error("Error ing image history:", jsonData.error);
+            console.error("Error fetching image history:", jsonData.error);
             return;
         }
         // Xóa nội dung cũ trong gallery nếu cần
@@ -115,7 +115,7 @@ function getUserImages() {
         });
     })
     .catch(error => {
-        console.error("Error ing history:", error);
+        console.error("Error fetching history:", error);
     });
 }
 function deleteImage(filePath, imageItem) {
@@ -126,7 +126,7 @@ function deleteImage(filePath, imageItem) {
         file_path: filePath,
         type: "text_to_image"
     }
-    ('https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev/api/delete_data', {
+    fetch('https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev/api/delete_data', {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json'
@@ -481,7 +481,7 @@ function getAllImages() {
                     commentsList.className = 'comments-list';
                     commentsList.style.cssText = `max-height: 200px; overflow-y: auto;`;
 
-                    fetch(`https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev/api/get_comments?id=${imageData.id}`)
+                    fetch(`https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev//api/get_comments?id=${imageData.id}`)
                         .then(response => response.json())
                         .then(data => {
                             if (data.success && data.comments.length > 0) {
