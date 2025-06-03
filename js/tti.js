@@ -96,7 +96,7 @@ function getUserImages() {
     // Giả sử type của bạn là "text_to_image"
     var type = "text_to_image";
 
-    fetch(`https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev//api/get_data_user?username=${encodeURIComponent(username)}&type=${encodeURIComponent(type)}`, {
+    fetch(`https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev/api/get_data_user?username=${encodeURIComponent(username)}&type=${encodeURIComponent(type)}`, {
         method: 'GET'
     })
     .then(response => response.json())
@@ -149,7 +149,7 @@ function deleteImage(filePath, imageItem) {
 function getAllImages() {
     const username = localStorage.getItem('username') || sessionStorage.getItem('username');
     const type = 'text_to_image';
-    fetch(`https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev//api/get_data_all?type=${encodeURIComponent(type)}&username=${encodeURIComponent(username)}`, {
+    fetch(`https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev/api/get_data_all?type=${encodeURIComponent(type)}&username=${encodeURIComponent(username)}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -269,7 +269,7 @@ function getAllImages() {
                     let likes = parseInt(this.getAttribute('data-likes'));
 
                     // Gửi yêu cầu đến endpoint /api/tym
-                    fetch('https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev//api/tym', {
+                    fetch('https://0667af30-f437-4343-bd10-6c6e8c341ce8-00-2fe3pat0r6lg3.pike.replit.dev/api/tym', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
