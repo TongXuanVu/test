@@ -329,7 +329,7 @@ async function Send_SubmitResetPassword() {
     }
 }
 
-const googleSignInButton = document.querySelector('.other:nth-child(1)');
+const googleSignInButton = document.getElementById('googleSignInDiv');
 const googleClientId = '2538207828-gqk1ah92p6fr28gsji3dr97hlmhjghn7.apps.googleusercontent.com';
 
 function handleCredentialResponse(response) {
