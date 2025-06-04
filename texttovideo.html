@@ -298,7 +298,7 @@
     });
     async function SendPrompt() {
       const loader = document.getElementById("mini-loader");
-      const prompt = document.getElementById("prompt").value.trim();
+      const prompt = document.getElementById("textInput").value.trim();
       const videoList = document.getElementById("video-list");
       const style = document.querySelector("select").value;
       const username = localStorage.getItem('username') || sessionStorage.getItem('username');
