@@ -9,17 +9,21 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./css/texttoimage.css" />
   <link rel="stylesheet" href="./css/header.css">
+  
+   
 </head>
 
 <body>
+  <!-- Cursor Trail Elements -->
+  <div class="cursor-trail"></div>
+  <div class="cursor-glow"></div>
+
   <header>
     <button class="menu-toggle">
       <i class="fas fa-bars"></i>
     </button>
     <div class="logo">
-      <img style="border: 2px solid #3b82f6 ;" class="w-16 h-16 rounded-full object-cover" src="./asserts/images/logo.png"
-      alt="Logo"
-      />
+      <img style="border: 2px solid #3b82f6;" class="w-16 h-16 rounded-full object-cover animate-float" src="./asserts/images/logo.png" alt="Logo" />
       <span class="logo_text" style="background: linear-gradient(90deg, #00c6ff, #7d51f1, #a855f7);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;" class="text-xl font-bold">
@@ -29,16 +33,15 @@
       <a href="index.html" class="text-white no-underline font-extrabold hover:text-green-300 pb-1 text-lg">Home</a>
       <a href="texttospeech.html" class="text-white no-underline font-extrabold hover:text-green-300 pb-1 text-lg">Text to Speech</a>
       <a href="#" class="text-blue-600 font-extrabold border-b-2 border-blue-600 pb-1 hover:text-blue-700 text-lg">Text to Image</a>
-      <a href="texttomusic.html" class="text-white no-underline font-extrabold  hover:text-green-300 pb-1 text-lg">Text to Music</a>
-      <a href="texttovideo.html" class="text-white no-underline font-extrabold  hover:text-green-300 pb-1 text-lg">Text to Video</a>
+      <a href="texttomusic.html" class="text-white no-underline font-extrabold hover:text-green-300 pb-1 text-lg">Text to Music</a>
+      <a href="texttovideo.html" class="text-white no-underline font-extrabold hover:text-green-300 pb-1 text-lg">Text to Video</a>
     </nav>
-      <div class="login-container">
-          <a href="sign_in.html" id="sign_in" class="login-button">Login</a>
-      </div>
+    <div class="login-container">
+      <a href="sign_in.html" id="sign_in" class="login-button">Login</a>
+    </div>
     <div class="avatar-container">
-      <div id="user-balance">Đang tải…</div>
+      <div style="color: aliceblue; margin-right: 0.75rem; justify-self: center; align-self: center;" id="user-balance">Loading…</div>
       <img src="./asserts/images/ho.jpg" alt="User Avatar" class="avatar" id="avatarImg">
-      <!-- Dropdown Menu -->
       <div class="dropdown-menu" id="dropdownMenu">
         <a href="profile.html" class="dropdown-menu-item">
           <i class="fas fa-user"></i>
@@ -61,18 +64,33 @@
         </a>
       </div>
     </div>
-  </div>
   </header>
 
-  <main style="background: #0a0425 url('https://img.freepik.com/free-vector/3d-abstract-background-with-paper-cut-flower-shape_1217-3276.jpg?t=st=1744531950~exp=1744535550~hmac=aa022095eb30c47ed65301885e315e0e9973437e662588f42bafb2ad2158dbd1&w=1480') no-repeat center center fixed;
-       background-size: cover;">
-    <!-- phần giới thiệu trang -->
-    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Text To Image</h1>
-    <div class="text mb-4">
-      Turn your imagination into visuals. Enter your text, choose a style, and let AI create stunning images from your
-      words.
+  <main style="background: #0a0425 url('https://img.freepik.com/free-vector/3d-abstract-background-with-paper-cut-flower-shape_1217-3276.jpg?t=st=1744531950~exp=1744535550~hmac=aa022095eb30c47ed65301885e315e0e9973437e662588f42bafb2ad2158dbd1&w=1480') no-repeat center center fixed; background-size: cover;">
+    
+    <!-- Particles Background -->
+    <div class="particles">
+      <div class="particle" style="left: 10%; animation-delay: 0s; width: 4px; height: 4px;"></div>
+      <div class="particle" style="left: 20%; animation-delay: 2s; width: 6px; height: 6px;"></div>
+      <div class="particle" style="left: 30%; animation-delay: 4s; width: 3px; height: 3px;"></div>
+      <div class="particle" style="left: 40%; animation-delay: 6s; width: 5px; height: 5px;"></div>
+      <div class="particle" style="left: 50%; animation-delay: 8s; width: 4px; height: 4px;"></div>
+      <div class="particle" style="left: 60%; animation-delay: 10s; width: 7px; height: 7px;"></div>
+      <div class="particle" style="left: 70%; animation-delay: 12s; width: 3px; height: 3px;"></div>
+      <div class="particle" style="left: 80%; animation-delay: 14s; width: 5px; height: 5px;"></div>
+      <div class="particle" style="left: 90%; animation-delay: 16s; width: 4px; height: 4px;"></div>
     </div>
-    <section class="carousel-container">
+
+    <!-- Hero Section -->
+    <div class="text-center py-12 reveal">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 white-title animate-pulse-custom">Text To Image</h1>
+      <div class="text mb-4 text-lg text-gray-200 max-w-2xl mx-auto px-4 reveal delay-200">
+        Turn your imagination into visuals. Enter your text, choose a style, and let AI create stunning images from your words.
+      </div>
+    </div>
+
+    <!-- Carousel Section -->
+    <section class="carousel-container reveal delay-300">
       <h2 class="text-2xl font-bold text-white text-center mb-6">Favorite Creations</h2>
       <div class="carousel" id="carousel">
         <!-- Carousel items -->
@@ -166,135 +184,401 @@
         <button id="nextSlide"><i class="fas fa-chevron-right"></i></button>
       </div>
     </section>
+
     <!-- Main Workspace -->
-    <div class="workspace expanded">
+    <div class="workspace expanded reveal delay-400">
       <div class="text-input-container">
         <label for="textInput">Describe the image you want to generate</label>
-        <textarea id="textInput" placeholder="Enter detailed description of the image you want to create..."></textarea>
+        <textarea id="textInput" placeholder="Enter detailed description of the image you want to create..." class="animate-glow"></textarea>
         <div id="errorMessage" class="error-message" style="display:none;">Please, input prompt!</div>
         <div class="controls">
           <div class="params">
-            <select id="style" name="style"
-              class="p-2 border rounded-lg bg-white/5 text-teal-300 hover:bg-white/10 transition-all duration-300 cursor-pointer hover:border-teal-500">
+            <select id="style" name="style" class="p-2 sm:p-2 text-sm sm:text-base border rounded-lg bg-white/5 text-gray-100 hover:bg-white/10 transition-all duration-300 cursor-pointer hover:border-blue-500">
               <option value="realistic" selected class="bg-[#0f0149] text-white">Realistic</option>
-              <option value="anime" class="bg-[#0f0149] text-white">Anime</option>
-              <option value="cartoon" class="bg-[#0f0149] text-white">Cartoon</option>
-              <option value="watercolor" class="bg-[#0f0149] text-white">Watercolor</option>
-              <option value="oil-painting" class="bg-[#0f0149] text-white">Oil Painting</option>
-              <option value="digital-art" class="bg-[#0f0149] text-white">Digital Art</option>
+              <option value="anime" class="bg-[#374151] text-white">Anime</option>
+              <option value="cartoon" class="bg-[#374151] text-white">Cartoon</option>
+              <option value="watercolor" class="bg-[#374151] text-white">Watercolor</option>
+              <option value="oil-painting" class="bg-[#374151] text-white">Oil Painting</option>
+              <option value="digital-art" class="bg-[#374151] text-white">Digital Art</option>
             </select>
-            <button type="button" id="startBtn" class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/30">🎤 Bấm để nói</button>
+            <button type="button" id="startBtn" class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/30 btn-enhanced">🎤 Click to Speak</button>
           </div>
           
           <div class="actions">
-            <button id="generate"
-              class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">Generate
-              Images</button>
-            <button id="clear"
-              class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30">Clear</button>
+            <button id="generate" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 btn-enhanced">Generate Images</button>
+            <button id="clear" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 btn-enhanced">Clear</button>
           </div>
         </div>
       </div>
       <div id="spinner" class="spinner" style="display: none;"></div>
       <div class="output-container">
         <label for="gallery" class="title">Generated Images</label>
-        <div class="image-gallery" id="gallery">
-        </div>
-        <button
-          class="download-all bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">Download
-          All Images</button>
+        <div class="image-gallery" id="gallery"></div>
+        <button class="download-all bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 btn-enhanced">Download All Images</button>
       </div>
-
     </div>
 
- <section class="sect py-10" style="background-color: rgba(0, 0, 0, 0.6)">
-        <div class="max-w-7xl mx-auto px-4">
-          <h2 class="text-3xl font-bold text-white mb-6 text-center">
-            Cách Thức Hoạt Động
-          </h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-gray-700 p-6 rounded-lg shadow">
-              <h3 class="text-xl font-semibold text-white mb-2">
-                Bước 1: Nhập Văn Bản
-              </h3>
-              <p class="text-gray-300">
-                Hãy nhập những ý tưởng mà bạn muốn chuyển thành ảnh.
-              </p>
+    <!-- Features Section with Zigzag Layout -->
+    <section class="py-16" style="background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px);">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-white mb-16 text-center gradient-text reveal">
+          Outstanding Features
+        </h2>
+        
+        <!-- Feature 1 -->
+        <div class="zigzag-layout mb-16">
+          <div class="grid zigzag-left gap-8 items-center">
+            <div class="reveal-left">
+              <div class="feature-card p-8 rounded-xl">
+                <div class="text-6xl mb-6 floating-element">🎨</div>
+                <h3 class="text-3xl font-bold text-white mb-4">Diverse Art Styles</h3>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                  From photorealistic renders to anime illustrations, watercolor paintings to digital masterpieces. Choose from hundreds of unique artistic styles to bring your vision to life.
+                </p>
+                <div class="mt-6">
+                  <span class="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm mr-2 mb-2">Realistic</span>
+                  <span class="inline-block bg-purple-500 text-white px-3 py-1 rounded-full text-sm mr-2 mb-2">Anime</span>
+                  <span class="inline-block bg-green-500 text-white px-3 py-1 rounded-full text-sm mr-2 mb-2">Watercolor</span>
+                </div>
+              </div>
             </div>
-            <div class="bg-gray-700 p-6 rounded-lg shadow">
-              <h3 class="text-xl font-semibold text-white mb-2">
-                Bước 2: Tùy Chọn Thể Loại
-              </h3>
-              <p class="text-gray-300">
-                Chọn phong cách, chủ đề và hiệu ứng hình ảnh để cá nhân hóa
-                ảnh của bạn.
-              </p>
-            </div>
-            <div class="bg-gray-700 p-6 rounded-lg shadow">
-              <h3 class="text-xl font-semibold text-white mb-2">
-                Bước 3: Tạo Ảnh
-              </h3>
-              <p class="text-gray-300">
-                Nhận ngay ảnh được tạo bởi trí tuệ nhân tạo, bạn có thể xem
-                tải xuống và chia sẻ nó.
-              </p>
+            <div class="reveal-right">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="art-style-card bg-gradient-to-br from-blue-500 to-purple-600 p-6 rounded-xl text-center">
+                  <div class="text-3xl mb-2">🎭</div>
+                  <div class="text-white font-semibold">Realistic</div>
+                </div>
+                <div class="art-style-card bg-gradient-to-br from-pink-500 to-red-500 p-6 rounded-xl text-center">
+                  <div class="text-3xl mb-2">🌸</div>
+                  <div class="text-white font-semibold">Anime</div>
+                </div>
+                <div class="art-style-card bg-gradient-to-br from-green-500 to-teal-500 p-6 rounded-xl text-center">
+                  <div class="text-3xl mb-2">🌊</div>
+                  <div class="text-white font-semibold">Watercolor</div>
+                </div>
+                <div class="art-style-card bg-gradient-to-br from-cyan-500 to-blue-500 p-6 rounded-xl text-center">
+                  <div class="text-3xl mb-2">💎</div>
+                  <div class="text-white font-semibold">Digital Art</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-      <section class="sect py-10" style="background-color: rgba(0, 0, 0, 0.6);">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-white mb-6 text-center">Đánh Giá Từ Người Dùng</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-white p-6 rounded-lg shadow">
-            <p class="text-gray-600 italic">"Thật tuyệt vời, thật không thể tin nổi, website này 
-              còn tuyệt vời hơn Bphone gấp nhiều lần."</p>
-            <h4 class="text-lg font-bold text-gray-800 mt-4">Nguyễn Tử Quảng</h4>
+
+        <!-- Feature 2 -->
+        <div class="zigzag-layout mb-16">
+          <div class="grid zigzag-right gap-8 items-center">
+            <div class="content-order reveal-right">
+              <div class="feature-card p-8 rounded-xl">
+                <div class="text-6xl mb-6 floating-element">⚡</div>
+                <h3 class="text-3xl font-bold text-white mb-4">Lightning Fast Generation</h3>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                  Experience the power of cutting-edge AI technology. Generate high-quality images in seconds, not minutes. Our advanced algorithms ensure rapid processing without compromising on quality.
+                </p>
+                <div class="mt-6 flex items-center space-x-4">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-blue-400">3-5s</div>
+                    <div class="text-sm text-gray-400">Average Time</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-green-400">4K</div>
+                    <div class="text-sm text-gray-400">Max Resolution</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-purple-400">99%</div>
+                    <div class="text-sm text-gray-400">Success Rate</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-order reveal-left">
+              <div class="grid grid-cols-1 gap-4">
+                <div class="stat-card p-6 rounded-xl text-center">
+                  <i class="fas fa-bolt text-4xl text-yellow-400 mb-4"></i>
+                  <div class="text-2xl font-bold text-white">Ultra Fast</div>
+                  <div class="text-gray-300">Processing Speed</div>
+                </div>
+                <div class="stat-card p-6 rounded-xl text-center">
+                  <i class="fas fa-magic text-4xl text-purple-400 mb-4"></i>
+                  <div class="text-2xl font-bold text-white">AI Powered</div>
+                  <div class="text-gray-300">Advanced Technology</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow">
-            <p class="text-gray-600 italic">"Từ khi tôi biết đến trang web này tôi không thể tập
-              trung và chiến sự Nga và Ukraina. Trang web này quá thú vị!"</p>
-            <h4 class="text-lg font-bold text-gray-800 mt-4"> Volodymyr Zelensky</h4>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="zigzag-layout">
+          <div class="grid zigzag-left gap-8 items-center">
+            <div class="reveal-left">
+              <div class="feature-card p-8 rounded-xl">
+                <div class="text-6xl mb-6 floating-element">🔮</div>
+                <h3 class="text-3xl font-bold text-white mb-4">Smart AI Understanding</h3>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                  Our advanced AI doesn't just process words—it understands context, emotion, and artistic intent. Describe your vision naturally, and watch as AI interprets and creates beyond your expectations.
+                </p>
+                <div class="mt-6">
+                  <div class="flex items-center mb-3">
+                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                    <span class="text-gray-300">Natural language processing</span>
+                  </div>
+                  <div class="flex items-center mb-3">
+                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                    <span class="text-gray-300">Context-aware generation</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                    <span class="text-gray-300">Emotion-based interpretation</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="reveal-right">
+              <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur-lg opacity-20"></div>
+                <div class="relative bg-black/50 backdrop-blur-sm p-8 rounded-xl border border-white/20">
+                  <div class="text-center">
+                    <i class="fas fa-brain text-6xl text-blue-400 mb-4 floating-element"></i>
+                    <h4 class="text-xl font-bold text-white mb-4">Neural Network</h4>
+                    <div class="space-y-2">
+                      <div class="h-2 bg-blue-500 rounded-full w-full"></div>
+                      <div class="h-2 bg-purple-500 rounded-full w-4/5"></div>
+                      <div class="h-2 bg-green-500 rounded-full w-3/4"></div>
+                      <div class="h-2 bg-yellow-500 rounded-full w-5/6"></div>
+                    </div>
+                    <p class="text-gray-300 mt-4">Processing your imagination...</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="py-10 sect" style="background-color: rgba(0, 0, 0, 0.6);">
+
+    <!-- Statistics Section with Grid Layout -->
+    <section class="py-16" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));">
       <div class="max-w-7xl mx-auto px-4">
-       <h2 class="text-3xl font-bold text-white mb-6 text-center">Câu Hỏi Thường Gặp</h2>
-          <div class="space-y-4">
-            <div class="bg-gray-700 p-4 rounded-lg shadow">
-            <h3 class="text-xl font-semibold text-white">Hỏi: Làm thế nào để sử dụng dịch vụ?</h3>
-            <p class="text-gray-300 mt-2">Trả lời: Bạn chỉ cần nhập mô tả ý tưởng hình ảnh, lựa chọn các tùy chọn phù hợp và nhấn nút "Generate".</p>
+        <h2 class="text-4xl font-bold text-white mb-12 text-center gradient-text reveal">
+          Impressive Statistics
+        </h2>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="stat-card p-6 rounded-xl text-center reveal-scale delay-100">
+            <i class="fas fa-images text-4xl text-blue-400 mb-4"></i>
+            <div class="text-4xl font-bold text-blue-400 mb-2">1M+</div>
+            <div class="text-gray-300">Images Generated</div>
           </div>
-          <div class="bg-gray-700 p-4 rounded-lg shadow">
-            <h3 class="text-xl font-semibold text-white">Hỏi: Dịch vụ bên bạn có thể tạo thêm hiệu ứng hoặc chỉnh sửa cho ảnh không?</h3>
-            <p class="text-gray-300 mt-2">Trả lời: Hiện tại, bạn có thể tạo ra các hình ảnh độc đáo dựa trên mô tả và lựa chọn các tuỳ chọn có sẵn. Nếu bạn cần thêm hiệu ứng hoặc chỉnh sửa chuyên sâu, chúng tôi sẽ phát triển thêm trong tương lai.</p>
+          
+          <div class="stat-card p-6 rounded-xl text-center reveal-scale delay-200">
+            <i class="fas fa-users text-4xl text-purple-400 mb-4"></i>
+            <div class="text-4xl font-bold text-purple-400 mb-2">50K+</div>
+            <div class="text-gray-300">Happy Users</div>
           </div>
-          <div class="bg-gray-700 p-4 rounded-lg shadow">
-            <h3 class="text-xl font-semibold text-white">Hỏi: Tôi có thể tải về ảnh của mình tạo ra không?</h3>
-            <p class="text-gray-300 mt-2">Trả lời: Tất nhiên bạn có thể tải hình ảnh về. Ngay khi ảnh tạo ra bạn nên tải hình ảnh về và chia sẻ với bạn bè về búc ảnh thú vị đó.</p>
+          
+          <div class="stat-card p-6 rounded-xl text-center reveal-scale delay-300">
+            <i class="fas fa-clock text-4xl text-green-400 mb-4"></i>
+            <div class="text-4xl font-bold text-green-400 mb-2">99.9%</div>
+            <div class="text-gray-300">Uptime</div>
+          </div>
+          
+          <div class="stat-card p-6 rounded-xl text-center reveal-scale delay-400">
+            <i class="fas fa-palette text-4xl text-yellow-400 mb-4"></i>
+            <div class="text-4xl font-bold text-yellow-400 mb-2">20+</div>
+            <div class="text-gray-300">Art Styles</div>
+          </div>
+        </div>
+
+        <!-- Additional Stats Row -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+          <div class="stat-card p-8 rounded-xl text-center reveal delay-500">
+            <i class="fas fa-star text-5xl text-yellow-400 mb-4"></i>
+            <div class="text-3xl font-bold text-white mb-2">4.9/5</div>
+            <div class="text-gray-300">Average Rating</div>
+            <div class="flex justify-center mt-2">
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+              <i class="fas fa-star text-yellow-400"></i>
+            </div>
+          </div>
+          
+          <div class="stat-card p-8 rounded-xl text-center reveal delay-600">
+            <i class="fas fa-download text-5xl text-blue-400 mb-4"></i>
+            <div class="text-3xl font-bold text-white mb-2">2.5M+</div>
+            <div class="text-gray-300">Downloads</div>
+            <div class="text-sm text-gray-400 mt-2">High quality exports</div>
+          </div>
+          
+          <div class="stat-card p-8 rounded-xl text-center reveal delay-700">
+            <i class="fas fa-globe text-5xl text-green-400 mb-4"></i>
+            <div class="text-3xl font-bold text-white mb-2">150+</div>
+            <div class="text-gray-300">Countries</div>
+            <div class="text-sm text-gray-400 mt-2">Worldwide reach</div>
           </div>
         </div>
       </div>
     </section>
 
   </main>
-  <section class="pt-5" style="background-color: #000000;">
+
+  <!-- Enhanced Footer -->
+  <footer class="bg-black text-white py-12">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-white mb-6 text-center">Liên Hệ</h2>
-      <p class="text-gray-600 mb-4 text-center">Nếu bạn có bất kỳ câu hỏi hoặc góp ý nào, hãy liên hệ với chúng tôi qua
-        email hoặc theo dõi trên các mạng xã hội:</p>
-      <ul class="list-disc list-inside text-gray-600 text-center">
-        <li>Email: support@alchemistai.com</li>
-        <li>Facebook: <a href="#" class="text-blue-600 hover:underline">AlchemistAI Official</a></li>
-        <li>Twitter: <a href="#" class="text-blue-600 hover:underline">@AlchemistAI</a></li>
-      </ul>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="col-span-1 md:col-span-2 reveal">
+          <h3 class="text-3xl font-bold mb-4 gradient-text">AlchemistAI</h3>
+          <p class="text-gray-400 mb-6 text-lg">
+            Transform your ideas into stunning visual art with the most advanced AI technology. Create, explore, and inspire with limitless possibilities.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300 transform hover:scale-110">
+              <i class="fab fa-facebook-f text-2xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300 transform hover:scale-110">
+              <i class="fab fa-twitter text-2xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300 transform hover:scale-110">
+              <i class="fab fa-instagram text-2xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300 transform hover:scale-110">
+              <i class="fab fa-youtube text-2xl"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="reveal delay-200">
+          <h4 class="text-xl font-semibold mb-6">Services</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-2 transform">Text to Speech</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-2 transform">Text to Image</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-2 transform">Text to Music</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-2 transform">Text to Video</a></li>
+          </ul>
+        </div>
+        
+        <div class="reveal delay-300">
+          <h4 class="text-xl font-semibold mb-6">Contact Info</h4>
+          <div class="space-y-4">
+            <div class="flex items-center group">
+              <i class="fas fa-envelope text-blue-400 mr-3 group-hover:animate-bounce"></i>
+              <span class="text-gray-400">support@alchemistai.com</span>
+            </div>
+            <div class="flex items-center group">
+              <i class="fas fa-phone text-blue-400 mr-3 group-hover:animate-bounce"></i>
+              <span class="text-gray-400">+84 123 456 789</span>
+            </div>
+            <div class="flex items-center group">
+              <i class="fas fa-map-marker-alt text-blue-400 mr-3 group-hover:animate-bounce"></i>
+              <span class="text-gray-400">Hanoi, Vietnam</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center reveal delay-400">
+        <p class="text-gray-400 text-lg">
+          © 2024 AlchemistAI. All rights reserved. Made with ❤️ in Vietnam.
+        </p>
+      </div>
     </div>
-  </section>
+  </footer>
 
   <script>
+    // Cursor Trail Effect
+    const cursorTrail = document.querySelector('.cursor-trail');
+    const cursorGlow = document.querySelector('.cursor-glow');
+    
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      
+      cursorTrail.style.left = x - 10 + 'px';
+      cursorTrail.style.top = y - 10 + 'px';
+      
+      cursorGlow.style.left = x - 50 + 'px';
+      cursorGlow.style.top = y - 50 + 'px';
+    });
 
+    // Reveal on Scroll Animation
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealElements.forEach(element => {
+      revealObserver.observe(element);
+    });
+
+    // Enhanced Scroll Animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Observe all fade-in elements
+      document.querySelectorAll('.fade-in-element').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Enhanced button hover effects with light trail
+      document.querySelectorAll('.btn-enhanced').forEach(button => {
+        button.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-2px) scale(1.02)';
+          this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(59, 130, 246, 0.4)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) scale(1)';
+          this.style.boxShadow = '';
+        });
+      });
+
+      // Add click animation to generate button
+      document.getElementById('generate').addEventListener('click', function(e) {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          this.style.transform = 'translateY(-2px) scale(1.02)';
+        }, 100);
+      });
+
+      // Add floating animation to feature icons
+      document.querySelectorAll('.floating-element').forEach((element, index) => {
+        element.style.animationDelay = (index * 0.5) + 's';
+      });
+
+      // Enhanced hover effects for cards
+      document.querySelectorAll('.feature-card, .stat-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) scale(1)';
+        });
+      });
+    });
+
+    // Original functionality
     document.getElementById('clear').addEventListener('click', function () {
       document.getElementById('textInput').value = '';
     });
@@ -304,45 +588,33 @@
     const errorMessage = document.getElementById('errorMessage');
     const spinner = document.getElementById('spinner');
 
-    const apiErrorMessagesDisplay = document.getElementById('apiErrorMessages'); // Nơi hiển thị lỗi từ API
-
-    // Các DOM element cho hiển thị số dư
-
     generateButton.addEventListener('click', function (event) {
       event.preventDefault()
-      // Kiểm tra nếu ô input trống
       if (textInput.value.trim() === "") {
         textInput.classList.add('error');
         errorMessage.style.display = 'block';
-        // Có thể thông báo cho người dùng nếu muốn
       } else {
         textInput.classList.remove('error');
         errorMessage.style.display = 'none';
-
         spinner.style.display = 'block';
-        // Tiếp tục xử lý phần generate image
         TextToImage();
       }
     });
+
     textInput.addEventListener('input', function () {
       if (this.value.trim() !== "") {
         this.classList.remove('error');
         errorMessage.style.display = 'none';
       }
     });
+
     document.addEventListener('DOMContentLoaded', function () {
       getUserImages();
       getAllImages();
-
     });
-
-    
-
-    // Hàm để cập nhật hiển thị số dư trên UI
-    
   </script>
+  
   <script src="./js/tti.js"></script>
-  <script src="./js/balance.js"></script>
   <script src="./js/chatbot.js"></script>
   <script src="./js/header.js"></script>
   <script src="./js/speech-to-text.js"></script>
