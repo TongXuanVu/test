@@ -90,6 +90,13 @@ header {
   position: relative;
 }
 
+#user-balance {
+  color: aliceblue; 
+  margin-right: 0.75rem; 
+  justify-self: center; 
+  align-self: center;
+}
+
 .avatar {
   width: 60px;
   height: 60px;
@@ -217,7 +224,15 @@ header {
 
   .avatar-container {
     position: absolute;
-    right: 30px;
+    right: 5%;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  #user-balance {
+    margin-right: 0;
+    margin-top: 5px;
+    font-size: small;
   }
 
   .avatar {

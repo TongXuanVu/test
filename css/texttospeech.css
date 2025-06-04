@@ -519,22 +519,8 @@ audio{
     color: #eee;
   }
 
-  .menu {
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-    margin-top: 20px;
-    display: none;
-  }
-
   .menu.active {
     display: flex;
-  }
-
-  .menu a {
-    width: 100%;
-    padding: 0.75rem;
-    text-align: left;
   }
 
   .avatar-container {
@@ -601,11 +587,6 @@ audio{
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
-  }
-
-  .menu a {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
   }
 
   select {
