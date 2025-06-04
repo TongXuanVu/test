@@ -523,12 +523,6 @@ audio{
     display: flex;
   }
 
-  .avatar-container {
-    position: absolute;
-    right: 30px;
-    top: 40px;
-  }
-
   .avatar {
     width: 36px;
     height: 36px;
