@@ -1208,12 +1208,6 @@ audio{
     flex-direction: column;
   }
 
-  .menu {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-
   select {
     min-width: 130px; 
     font-size: 0.9rem;

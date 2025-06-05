@@ -1077,18 +1077,6 @@ select {
     flex-direction: column;
   }
 
-
-  .menu {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-
-  .menu a {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
-  }
-
   select {
     min-width: 130px;
     font-size: 0.9rem;
