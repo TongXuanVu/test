@@ -1,289 +1,674 @@
 <!DOCTYPE html>
-<html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Tài khoản</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/account.css" />
-  </head>
-  <body>
-    <div class="account-header">
-      <h1 class="account-title">Tài khoản</h1>
-      <div class="header-actions">
-        <img
-          id="avatarImg"
-          class="avatar"
-          src="img_source/ho.jpg"
-          alt="avatar"
-          onclick="document.getElementById('avatarInput').click()"
-        />
-        <input
-          type="file"
-          id="avatarInput"
-          accept="image/*"
-          style="display: none"
-          onchange="changeAvatar(event)"
-        />
-        <div class="toggle-container">
-          <span style="font-size: 16px; margin-right: 6px">🌙</span>
-          <label class="switch">
-            <input
-              id="button-darkmode"
-              type="checkbox"
-              name="dark-mode"
-              checked
-            />
-            <span class="slider round"></span>
-          </label>
-        </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/header.css">
+  <script src="./js/header.js"></script>
+  <style>
+    /* Keep your original header styles */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Simple animations */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Account container styles with theme matching header */
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #0c0233 0%, #1a0f4d 100%);
+      min-height: 100vh;
+    }
+
+    .account-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 2rem auto;
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(12, 2, 51, 0.15);
+      overflow: hidden;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(180deg, #0c0233 0%, #1a0f4d 100%);
+      padding: 2rem 0;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li {
+      margin: 0.5rem 0;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 1rem 2rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar a:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #6366f1;
+      transform: scaleY(0);
+      transition: transform 0.2s ease;
+    }
+
+    .sidebar li.active a:before,
+    .sidebar a:hover:before {
+      transform: scaleY(1);
+    }
+
+    .sidebar li.active a,
+    .sidebar a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #c7d2fe;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 2rem;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .tab-content {
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .tab-content h2 {
+      color: #0c0233;
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .tab-content h2:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #0c0233, #6366f1);
+      border-radius: 2px;
+    }
+
+    .details-table {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(12, 2, 51, 0.08);
+      border: 1px solid rgba(12, 2, 51, 0.1);
+    }
+
+    .details-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid #f1f5f9;
+      transition: all 0.2s ease;
+    }
+
+    .details-row:hover {
+      background: rgba(12, 2, 51, 0.03);
+      border-radius: 8px;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .details-row:last-child {
+      border-bottom: none;
+    }
+
+    .details-label {
+      font-weight: 600;
+      color: #0c0233;
+      font-size: 1rem;
+    }
+
+    .details-value {
+      color: #475569;
+      font-weight: 500;
+    }
+
+    /* Loading animation */
+    .loading {
+      background: linear-gradient(90deg, #f8fafc 25%, #e2e8f0 50%, #f8fafc 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Table styles for history */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(12, 2, 51, 0.08);
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    th {
+      background: linear-gradient(135deg, #0c0233 0%, #1a0f4d 100%);
+      color: white;
+      padding: 1rem;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid #f1f5f9;
+      transition: background-color 0.2s ease;
+    }
+
+    tr:hover td {
+      background: rgba(12, 2, 51, 0.03);
+    }
+
+    /* Product cards */
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 15px rgba(12, 2, 51, 0.08);
+      border: 1px solid rgba(12, 2, 51, 0.1);
+      transition: all 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(12, 2, 51, 0.12);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .account-container {
+        flex-direction: column;
+        margin: 1rem;
+        border-radius: 12px;
+      }
+      
+      .sidebar {
+        width: 100%;
+        padding: 1rem 0;
+      }
+      
+      .sidebar ul {
+        display: flex;
+        overflow-x: auto;
+        padding: 0 1rem;
+        gap: 0.5rem;
+      }
+      
+      .sidebar li {
+        flex-shrink: 0;
+        margin: 0;
+      }
+      
+      .sidebar a {
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        white-space: nowrap;
+      }
+      
+      .main-content {
+        padding: 1.5rem;
+      }
+      
+      .details-table {
+        padding: 1.5rem;
+      }
+      
+      .details-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1rem 0;
+      }
+      
+      .details-label {
+        font-size: 0.9rem;
+      }
+      
+      .tab-content h2 {
+        font-size: 1.5rem;
+      }
+      
+      table, th, td {
+        font-size: 0.9rem;
+      }
+      
+      th, td {
+        padding: 0.8rem 0.5rem;
+      }
+      
+      .product-card {
+        padding: 1rem;
+      }
+      
+      .product-card > div {
+        flex-direction: column !important;
+        gap: 1rem !important;
+      }
+      
+      .product-card > div > div:first-child {
+        flex: none !important;
+        align-self: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .account-container {
+        margin: 0.5rem;
+      }
+      
+      .main-content {
+        padding: 1rem;
+      }
+      
+      .details-table {
+        padding: 1rem;
+      }
+      
+      .tab-content h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      table {
+        font-size: 0.8rem;
+      }
+      
+      th, td {
+        padding: 0.6rem 0.3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <button class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="logo">
+      <img style="border: 2px solid #3b82f6;" class="w-16 h-16 rounded-full object-cover" src="./asserts/images/logo.png" alt="Logo" />
+      <span class="logo_text" style="background: linear-gradient(90deg, #00c6ff, #7d51f1, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;" class="text-xl font-bold">
+      AlchemistAI</span>
+    </div>
+    <nav class="menu">
+      <a href="index.html" class="text-white no-underline font-extrabold hover:text-green-300 pb-1 text-lg">Home</a>
+      <a href="texttospeech.html" class="text-white no-underline font-extrabold hover:text-green-300 pb-1 text-lg">Text to Speech</a>
+      <a href="texttoimage.html" class="text-white no-underline font-extrabold hover:text-green-300 pb-1 text-lg">Text to Image</a>
+      <a href="texttomusic.html" class="text-white no-underline font-extrabold hover:text-green-300 pb-1 text-lg">Text to Music</a>
+      <a href="texttovideo.html" class="text-white no-underline font-extrabold hover:text-green-300 pb-1 text-lg">Text to Video</a>
+    </nav>
+    <div class="login-container">
+      <a href="sign_in.html" id="sign_in" class="login-button">Login</a>
+    </div>
+    <div class="avatar-container">
+      <div style="color: aliceblue; margin-right: 0.75rem; justify-self: center; align-self: center;" id="user-balance">Loading…</div>
+      <img src="./asserts/images/ho.jpg" alt="User Avatar" class="avatar" id="avatarImg">
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="profile.html" class="dropdown-menu-item">
+          <i class="fas fa-user"></i>
+          <span>Profile</span>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="settings.html" class="dropdown-menu-item">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="https://36f20c06-9031-4599-91da-7ec3a0e1a861-00-1jytyyr3v3x2w.pike.replit.dev/payment" class="dropdown-menu-item">
+          <i class="fas fa-money-bill"></i>
+          <span>Payment</span>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="sign_in.html" class="dropdown-menu-item logout">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Log out</span>
+        </a>
       </div>
     </div>
+  </header>
 
-    <div class="account-container">
-      <nav class="sidebar">
-        <ul>
-          <li class="active">
-            <a href="#" onclick="showTab('Detail',event)">Chi tiết</a>
-          </li>
-          <li>
-            <a href="#" onclick="showTab('Deposit',event)">Lịch sử nạp tiền</a>
-          </li>
-          <li>
-            <a href="#" onclick="showTab('product',event)">Sản phẩm gần đây</a>
-          </li>
-        </ul>
-      </nav>
-      <main class="main-content">
-        <div id="tab-Detail" class="tab-content">
-          <h2>Chi tiết</h2>
-          <div class="details-table">
-            <div class="details-row">
-              <div class="details-label">Địa chỉ email:</div>
-              <div class="details-value" id="emailField"></div>
+  <div class="account-container">
+    <nav class="sidebar">
+      <ul>
+        <li class="active">
+          <a href="#" onclick="showTab('Detail',event)">
+            <i class="fas fa-user-circle" style="margin-right: 0.5rem;"></i>
+            Account Details
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showTab('Deposit',event)">
+            <i class="fas fa-credit-card" style="margin-right: 0.5rem;"></i>
+            Deposit History
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showTab('product',event)">
+            <i class="fas fa-history" style="margin-right: 0.5rem;"></i>
+            Recent Products
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <main class="main-content">
+      <div id="tab-Detail" class="tab-content">
+        <h2><i class="fas fa-user-circle" style="margin-right: 0.5rem;"></i>Account Details</h2>
+        <div class="details-table">
+          <div class="details-row">
+            <div class="details-label">
+              <i class="fas fa-envelope" style="margin-right: 0.5rem; color: #667eea;"></i>
+              Email Address:
             </div>
-            <div class="details-row">
-              <div class="details-label">Tên đăng nhập:</div>
-              <div class="details-value" id="usernameField"></div>
+            <div class="details-value" id="emailField">Loading...</div>
+          </div>
+          <div class="details-row">
+            <div class="details-label">
+              <i class="fas fa-user" style="margin-right: 0.5rem; color: #667eea;"></i>
+              Username:
             </div>
-            <div class="details-row">
-              <div class="details-label">Ngày tạo tài khoản:</div>
-              <div class="details-value" id="createdAtField"></div>
+            <div class="details-value" id="usernameField">Loading...</div>
+          </div>
+          <div class="details-row">
+            <div class="details-label">
+              <i class="fas fa-calendar-alt" style="margin-right: 0.5rem; color: #667eea;"></i>
+              Account Created:
             </div>
+            <div class="details-value" id="createdAtField">Loading...</div>
           </div>
         </div>
-        <div id="tab-Deposit" class="tab-content" style="display: none">
-          <h2>Lịch sử nạp tiền</h2>
-          <div id="depositHistoryList"></div>
+      </div>
+      
+      <div id="tab-Deposit" class="tab-content" style="display: none">
+        <h2><i class="fas fa-credit-card" style="margin-right: 0.5rem;"></i>Deposit History</h2>
+        <div id="depositHistoryList">
+          <div class="loading" style="height: 100px; border-radius: 10px;"></div>
         </div>
+      </div>
 
-        <div id="tab-product" class="tab-content" style="display: none">
-          <h2>Sản phẩm gần đây</h2>
-          <div id="recentProductList"></div>
+      <div id="tab-product" class="tab-content" style="display: none">
+        <h2><i class="fas fa-history" style="margin-right: 0.5rem;"></i>Recent Products</h2>
+        <div id="recentProductList">
+          <div class="loading" style="height: 100px; border-radius: 10px;"></div>
         </div>
-      </main>
-    </div>
-  </body>
+      </div>
+    </main>
+  </div>
 
-  <script>
-    function changeAvatar(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        document.getElementById("avatarImg").src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-
-    function showTab(tab, event) {
-      event = event || window.event;
-      document
-        .querySelectorAll(".tab-content")
-        .forEach((div) => (div.style.display = "none"));
-      document.getElementById("tab-" + tab).style.display = "block";
-      document
-        .querySelectorAll(".sidebar li")
-        .forEach((li) => li.classList.remove("active"));
-      if (event && event.target)
-        event.target.closest("li").classList.add("active");
-      if (tab === "product") loadRecentProducts();
-      if (tab === "Deposit") loadDepositHistory();
-    }
-
-    // Lấy user info khi vào trang
-    window.onload = function () {
-      showTab("Detail", new Event("load"));
-      const currentUsername = localStorage.getItem('username') || sessionStorage.getItem('username');
-      if (currentUsername) {
-        fetch(
-          `https://68cfba9e-fe18-4301-8a54-7a4bfc790350-00-26ktjx6yhw4zw.pike.replit.dev/api/get_user_info?username=${encodeURIComponent(
-            currentUsername
-          )}`
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.success) {
-              document.getElementById("emailField").textContent = data.email;
-              document.getElementById("usernameField").textContent =
-                data.username;
-              document.getElementById("createdAtField").textContent =
-                data.created_at;
-            } else {
-              console.error("Lỗi:", data.error);
-            }
-          })
-          .catch((err) => console.error("Lỗi fetch API:", err));
-      } else {
-        document.getElementById("usernameField").textContent =
-          "Bạn chưa đăng nhập!";
-      }
+<script>
+  function changeAvatar(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const avatarImg = document.getElementById("avatarImg");
+      avatarImg.style.transform = "scale(0)";
+      setTimeout(() => {
+        avatarImg.src = e.target.result;
+        avatarImg.style.transform = "scale(1)";
+      }, 200);
     };
+    reader.readAsDataURL(file);
+  }
 
-    // Load 5 sản phẩm gần nhất
-    function loadRecentProducts() {
-      const username = localStorage.getItem('username') || sessionStorage.getItem('username');
-      const productDiv = document.getElementById("recentProductList");
-      productDiv.innerHTML = "Đang tải...";
+  function showTab(tab, event) {
+    event = event || window.event;
+    
+    // Simple hide/show without complex animations
+    document.querySelectorAll(".tab-content").forEach((div) => {
+      div.style.display = "none";
+    });
+    
+    document.getElementById("tab-" + tab).style.display = "block";
+    
+    // Update active sidebar item
+    document.querySelectorAll(".sidebar li").forEach((li) => li.classList.remove("active"));
+    if (event && event.target) {
+      event.target.closest("li").classList.add("active");
+    }
+    
+    // Load data for specific tabs
+    if (tab === "product") loadRecentProducts();
+    if (tab === "Deposit") loadDepositHistory();
+  }
 
-      if (!username) {
-        productDiv.textContent = "Bạn chưa đăng nhập.";
-        return;
-      }
+  // Load user info on page load
+  window.onload = function () {
+    showTab("Detail", new Event("load"));
+    const currentUsername = localStorage.getItem('username') || sessionStorage.getItem('username');
+    
+    if (currentUsername) {
       fetch(
-        `https://68cfba9e-fe18-4301-8a54-7a4bfc790350-00-26ktjx6yhw4zw.pike.replit.dev/api/recent_products?username=${encodeURIComponent(
-          username
-        )}`
+        `https://68cfba9e-fe18-4301-8a54-7a4bfc790350-00-26ktjx6yhw4zw.pike.replit.dev/api/get_user_info?username=${encodeURIComponent(currentUsername)}`
       )
         .then((res) => res.json())
         .then((data) => {
-          if (data.success && data.products.length > 0) {
-            productDiv.innerHTML = data.products
-              .map((p) => {
-                let title = p.input_text || "(không có mô tả)";
-                let type = p.conversion_type || "";
-                let file = p.result || "";
-                let time = p.timestamp
-                  ? new Date(p.timestamp).toLocaleString()
-                  : "";
-                let filePreview = "";
-                if (type === "text_to_image") {
-                  filePreview = `<img src="/${file}" style="max-width:120px;max-height:80px;border-radius:6px;">`;
-                } else if (type === "text_to_video") {
-                  filePreview = `<video src="/${file}" controls style="max-width:150px;max-height:80px;border-radius:6px"></video>`;
-                } else if (type === "text_to_music") {
-                  filePreview = `<audio src="/${file}" controls style="width:120px"></audio>`;
-                } else if (type === "text_to_speech") {
-                  filePreview = `<audio src="/${file}" controls style="width:120px"></audio>`;
-                }
-                return `
-                  <div style="display:flex;align-items:center;margin-bottom:16px;background:#f7f7f9;padding:12px;border-radius:8px">
+          if (data.success) {
+            document.getElementById("emailField").textContent = data.email;
+            document.getElementById("usernameField").textContent = data.username;
+            document.getElementById("createdAtField").textContent = data.created_at;
+          } else {
+            console.error("Error:", data.error);
+          }
+        })
+        .catch((err) => console.error("API fetch error:", err));
+    } else {
+      document.getElementById("usernameField").textContent = "Not logged in!";
+    }
+  };
+
+  // Load recent products with enhanced animations
+  function loadRecentProducts() {
+    const username = localStorage.getItem('username') || sessionStorage.getItem('username');
+    const productDiv = document.getElementById("recentProductList");
+    productDiv.innerHTML = '<div class="loading" style="height: 100px; border-radius: 10px;"></div>';
+
+    if (!username) {
+      productDiv.innerHTML = '<div class="product-card">You are not logged in.</div>';
+      return;
+    }
+    
+    fetch(
+      `https://68cfba9e-fe18-4301-8a54-7a4bfc790350-00-26ktjx6yhw4zw.pike.replit.dev/api/recent_products?username=${encodeURIComponent(username)}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.products.length > 0) {
+          productDiv.innerHTML = data.products
+            .map((p) => {
+              let title = p.input_text || "(no description)";
+              let type = p.conversion_type || "";
+              let file = p.result || "";
+              let time = p.timestamp ? new Date(p.timestamp).toLocaleString() : "";
+              let filePreview = "";
+              
+              if (type === "text_to_image") {
+                filePreview = `<img src="/${file}" style="max-width:120px;max-height:80px;border-radius:6px;object-fit:cover;">`;
+              } else if (type === "text_to_video") {
+                filePreview = `<video src="/${file}" controls style="max-width:150px;max-height:80px;border-radius:6px"></video>`;
+              } else if (type === "text_to_music") {
+                filePreview = `<audio src="/${file}" controls style="width:120px"></audio>`;
+              } else if (type === "text_to_speech") {
+                filePreview = `<audio src="/${file}" controls style="width:120px"></audio>`;
+              }
+              
+              return `
+                <div class="product-card">
+                  <div style="display:flex;align-items:center;gap:1rem;">
                     <div style="flex:0 0 160px">${filePreview}</div>
-                    <div style="flex:1 1 auto;padding-left:12px">
-                      <div><strong>Loại:</strong> ${type.replaceAll(
-                        "_",
-                        " "
-                      )}</div>
-                      <div><strong>Mô tả:</strong> ${title}</div>
-                      <div><small>${time}</small></div>
+                    <div style="flex:1">
+                      <div style="margin-bottom: 0.5rem;"><strong style="color: #0c0233;">Type:</strong> <span style="color: #64748b;">${type.replaceAll("_", " ")}</span></div>
+                      <div style="margin-bottom: 0.5rem;"><strong style="color: #0c0233;">Description:</strong> <span style="color: #64748b;">${title}</span></div>
+                      <div><small style="color: #94a3b8;">${time}</small></div>
                     </div>
                   </div>
-                `;
-              })
-              .join("");
-          } else {
-            productDiv.innerHTML = "<em>Chưa có sản phẩm nào.</em>";
-          }
-        })
-        .catch((err) => {
-          productDiv.textContent = "Không lấy được sản phẩm.";
-          console.error(err);
-        });
-    }
-  </script>
-  <script>
-    function loadDepositHistory() {
-      const username = localStorage.getItem('username') || sessionStorage.getItem('username');
-      const depositDiv = document.getElementById("depositHistoryList");
-      depositDiv.innerHTML = "Đang tải...";
+                </div>
+              `;
+            })
+            .join("");
+        } else {
+          productDiv.innerHTML = '<div class="product-card"><em>No products yet.</em></div>';
+        }
+      })
+      .catch((err) => {
+        productDiv.innerHTML = '<div class="product-card">Unable to load products.</div>';
+        console.error(err);
+      });
+  }
 
-      if (!username) {
-        depositDiv.textContent = "Bạn chưa đăng nhập.";
-        return;
-      }
-      fetch(
-        `https://68cfba9e-fe18-4301-8a54-7a4bfc790350-00-26ktjx6yhw4zw.pike.replit.dev/api/get_transaction_history?username=${encodeURIComponent(
-          username
-        )}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.success && data.transactions.length > 0) {
-            depositDiv.innerHTML = `
-          <table style="width:100%;border-collapse:collapse;margin-top:8px;">
-            <thead>
-              <tr>
-                <th>Thời gian</th>
-                <th>Mô tả</th>
-                <th>Số tiền</th>
-                <th>Trạng thái</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${data.transactions
-                .map(
-                  (tran) => `
-                  <tr>
-                    <td>${new Date(tran.created_at).toLocaleString()}</td>
-                    <td>${tran.order_desc}</td>
-                    <td>${Number(tran.amount).toLocaleString()}₫</td>
-                    <td>
-                      ${
-                        tran.status == 1
-                          ? '<span style="color:green">Thành công</span>'
-                          : '<span style="color:gray">Chờ duyệt</span>'
-                      }
-                    </td>
-                  </tr>
-                `
-                )
-                .join("")}
-            </tbody>
-          </table>
-        `;
-          } else {
-            depositDiv.innerHTML = "<em>Chưa có lịch sử nạp tiền nào.</em>";
-          }
-        })
-        .catch((err) => {
-          depositDiv.textContent = "Không lấy được lịch sử.";
-          console.error(err);
-        });
+  // Load deposit history with enhanced styling
+  function loadDepositHistory() {
+    const username = localStorage.getItem('username') || sessionStorage.getItem('username');
+    const depositDiv = document.getElementById("depositHistoryList");
+    depositDiv.innerHTML = '<div class="loading" style="height: 100px; border-radius: 10px;"></div>';
+
+    if (!username) {
+      depositDiv.innerHTML = '<div class="product-card">You are not logged in.</div>';
+      return;
     }
-  </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Đồng bộ trạng thái switch và dark mode khi tải lại trang
-      const darkSwitch = document.getElementById("button-darkmode");
-      // Nếu có muốn lưu trạng thái theme vào localStorage:
+    
+    fetch(
+      `https://68cfba9e-fe18-4301-8a54-7a4bfc790350-00-26ktjx6yhw4zw.pike.replit.dev/api/get_transaction_history?username=${encodeURIComponent(username)}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.transactions.length > 0) {
+          depositDiv.innerHTML = `
+            <table>
+              <thead>
+                <tr>
+                  <th><i class="fas fa-clock" style="margin-right: 0.5rem;"></i>Time</th>
+                  <th><i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>Description</th>
+                  <th><i class="fas fa-money-bill-wave" style="margin-right: 0.5rem;"></i>Amount</th>
+                  <th><i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${data.transactions
+                  .map(
+                    (tran) => `
+                      <tr>
+                        <td>${new Date(tran.created_at).toLocaleString()}</td>
+                        <td>${tran.order_desc}</td>
+                        <td style="font-weight: 600; color: #667eea;">${Number(tran.amount).toLocaleString()}₫</td>
+                        <td>
+                          ${tran.status == 1
+                            ? '<span style="color:#10b981;font-weight:600;"><i class="fas fa-check-circle"></i> Success</span>'
+                            : '<span style="color:#6b7280;"><i class="fas fa-clock"></i> Pending</span>'
+                          }
+                        </td>
+                      </tr>
+                    `
+                  )
+                  .join("")}
+              </tbody>
+            </table>
+          `;
+        } else {
+          depositDiv.innerHTML = '<div class="product-card"><em>No deposit history yet.</em></div>';
+        }
+      })
+      .catch((err) => {
+        depositDiv.innerHTML = '<div class="product-card">Unable to load history.</div>';
+        console.error(err);
+      });
+  }
+
+  // Enhanced avatar dropdown functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    const avatarImg = document.getElementById("avatarImg");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    
+    if (avatarImg && dropdownMenu) {
+      avatarImg.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const isVisible = dropdownMenu.style.display === "block";
+        dropdownMenu.style.display = isVisible ? "none" : "block";
+      });
+      
+      document.addEventListener("click", function() {
+        dropdownMenu.style.display = "none";
+      });
+    }
+    
+    // Theme synchronization
+    const darkSwitch = document.getElementById("button-darkmode");
+    if (darkSwitch) {
       const savedTheme = localStorage.getItem("theme-mode");
       if (savedTheme) {
         document.body.classList.toggle("dark-mode", savedTheme === "dark");
         darkSwitch.checked = savedTheme === "dark";
       } else {
-        // Mặc định bật dark mode (giống HTML gốc)
         document.body.classList.toggle("dark-mode", darkSwitch.checked);
       }
 
-      // Lắng nghe khi gạt switch
       darkSwitch.addEventListener("change", function (e) {
         const isDark = e.target.checked;
         document.body.classList.toggle("dark-mode", isDark);
-        // Lưu trạng thái
         localStorage.setItem("theme-mode", isDark ? "dark" : "light");
       });
-    });
-  </script>
+    }
+  });
+</script>
+</body>
 </html>
