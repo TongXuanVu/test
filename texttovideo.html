@@ -184,77 +184,144 @@
       </div>
       <div id="video-list" class="max-h-250 overflow-y-auto space-y-4 bg-gray-50 p-4 rounded-lg shadow"></div>
     </div>
-    <section class="sect py-10" style="background-color: rgba(0, 0, 0, 0.6)">
-        <div class="max-w-7xl mx-auto px-4">
-          <h2 class="text-3xl font-bold text-white mb-6 text-center">
-            Cách Thức Hoạt Động
-          </h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-gray-700 p-6 rounded-lg shadow">
-              <h3 class="text-xl font-semibold text-white mb-2">
-                Bước 1: Nhập Văn Bản
-              </h3>
-              <p class="text-gray-300">
-                Hãy nhập những dòng ý tưởng mà bạn muốn chuyển thành video.
-              </p>
+    <section class="features-section">
+      <div class="bg-particles" id="particles"></div>
+
+      <div class="wow-layer">
+          <div class="prompt-card">
+              <div class="prompt-title">Your Simple Words...</div>
+              <div class="prompt-text">
+                A majestic eagle flying over a snow-capped mountain range at sunrise, cinematic, 4K, dramatic lighting.
+                  <span class="typing-cursor"></span>
+              </div>
+          </div>
+
+          <div class="connection-line"></div>
+
+          <div class="video-showcase">
+            <div class="video-frame">
+                <!-- Video thật sự -->
+                <video 
+                    id="demoVideo" 
+                    class="demo-video" 
+                    loop 
+                    muted 
+                    preload="metadata"
+                    poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                >
+                                                           
+                    <source src="./asserts/videos/videodemo.mp4" type="video/mp4">
+                    
+                    <!-- Fallback nếu không load được video -->
+                    <div class="video-placeholder">
+                        <div class="play-button">
+                            <i class="fas fa-play" style="color: white; font-size: 1.5rem; margin-left: 4px;"></i>
+                        </div>
+                    </div>
+                </video>
+                
+                <!-- Overlay với nút play -->
+                <div class="video-overlay" id="videoOverlay">
+                    <div class="play-button" id="playButton">
+                        <i class="fas fa-play" style="color: white; font-size: 1.5rem; margin-left: 4px;"></i>
+                    </div>
+                </div>
+                
+                <!-- Video controls -->
+                <div class="video-controls">
+                    <button class="control-btn" id="pauseBtn" title="Pause/Play">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="control-btn" id="muteBtn" title="Mute/Unmute">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    <button class="control-btn" id="fullscreenBtn" title="Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                </div>
             </div>
-            <div class="bg-gray-700 p-6 rounded-lg shadow">
-              <h3 class="text-xl font-semibold text-white mb-2">
-                Bước 2: Tùy Chọn Thể Loại
-              </h3>
-              <p class="text-gray-300">
-                Chọn phong cách, chủ đề và hiệu ứng hình ảnh để cá nhân hóa
-                video của bạn.
-              </p>
-            </div>
-            <div class="bg-gray-700 p-6 rounded-lg shadow">
-              <h3 class="text-xl font-semibold text-white mb-2">
-                Bước 3: Tạo Video
-              </h3>
-              <p class="text-gray-300">
-                Nhận ngay video được tạo bởi trí tuệ nhân tạo, bạn có thể xem
-                tải xuống và chia sẻ nó.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="sect py-10" style="background-color: rgba(0, 0, 0, 0.6);">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-white mb-6 text-center">Đánh Giá Từ Người Dùng</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-white p-6 rounded-lg shadow">
-            <p class="text-gray-600 italic">"Trang web này thực sự tuyệt vời! Chúng ta sẽ không thể
-              tìm ở đâu ra 1 trang web như vậy nữa."</p>
-            <h4 class="text-lg font-bold text-gray-800 mt-4">Nguyễn Văn Trường</h4>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow">
-            <p class="text-gray-600 italic">"Rất độc đáo và sáng tạo. Tôi khuyên mọi người nên thử
-              ngay! Ura Ura Ura"</p>
-            <h4 class="text-lg font-bold text-gray-800 mt-4">Vladimir Vladimirovich Putin</h4>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="py-10 sect" style="background-color: rgba(0, 0, 0, 0.6);">
-      <div class="max-w-7xl mx-auto px-4">
-       <h2 class="text-3xl font-bold text-white mb-6 text-center">Câu Hỏi Thường Gặp</h2>
-          <div class="space-y-4">
-            <div class="bg-gray-700 p-4 rounded-lg shadow">
-            <h3 class="text-xl font-semibold text-white">Hỏi: Làm thế nào để sử dụng dịch vụ?</h3>
-            <p class="text-gray-300 mt-2">Trả lời: Bạn chỉ cần nhập mô tả ý tưởng video, lựa chọn các tùy chọn phù hợp và nhấn nút "Tạo Video".</p>
-          </div>
-          <div class="bg-gray-700 p-4 rounded-lg shadow">
-            <h3 class="text-xl font-semibold text-white">Hỏi: Dịch vụ bên bạn có thể tạo âm thanh trong video hay không?</h3>
-            <p class="text-gray-300 mt-2">Trả lời: Hiện tại, video của chúng tôi chưa có âm thanh nhưng chúng tôi có dịch vụ khác để tạo ra âm thanh.</p>
-          </div>
-          <div class="bg-gray-700 p-4 rounded-lg shadow">
-            <h3 class="text-xl font-semibold text-white">Hỏi: Tôi có thể tải về video của mình không?</h3>
-            <p class="text-gray-300 mt-2">Trả lời: Sau khi video được tạo ra, bạn có thể tải về máy để xem hoặc chia sẻ cho bạn bè.</p>
-          </div>
+            <div class="video-title">...Become a Visual Masterpiece.</div>
         </div>
       </div>
-    </section>
+
+      <div class="toolkit-layer">
+          <h2 class="toolkit-title">Your Creative Toolkit</h2>
+          <div class="toolkit-grid">
+              <div class="toolkit-card">
+                  <i class="fas fa-wand-magic-sparkles toolkit-icon"></i>
+                  <h3 class="toolkit-card-title">Infinite Styles</h3>
+                  <p class="toolkit-card-desc">From cinematic and 3D animation to minimalist explainer videos. Choose a style, and the AI will apply it with perfect precision.</p>
+              </div>
+              <div class="toolkit-card">
+                  <i class="fas fa-layer-group toolkit-icon"></i>
+                  <h3 class="toolkit-card-title">Vast Asset Library</h3>
+                  <p class="toolkit-card-desc">Access millions of 4K stock videos, images, and licensed music tracks. Never search for resources again.</p>
+              </div>
+              <div class="toolkit-card">
+                  <i class="fas fa-palette toolkit-icon"></i>
+                  <h3 class="toolkit-card-title">Brand Integration</h3>
+                  <p class="toolkit-card-desc">The AI automatically applies your logo, fonts, and brand colors to every video to ensure consistency.</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="why-layer">
+          <div class="why-container">
+              <h2 class="why-title">Unleash Your Potential</h2>
+              <div class="why-grid">
+                  <div class="why-card">
+                      <div class="why-card-subtitle">For Marketers</div>
+                      <h3 class="why-card-title">Boost Engagement 3x</h3>
+                      <ul class="why-benefits">
+                          <li>Create ad videos in minutes</li>
+                          <li>Easily A/B test video content</li>
+                          <li>Capture attention on social media</li>
+                      </ul>
+                  </div>
+                  <div class="why-card">
+                      <div class="why-card-subtitle">For Creators</div>
+                      <h3 class="why-card-title">Save 90% of Your Time</h3>
+                      <ul class="why-benefits">
+                          <li>Automate tedious editing tasks</li>
+                          <li>Turn long blog posts into a video series</li>
+                          <li>Produce content 10x faster</li>
+                      </ul>
+                  </div>
+                  <div class="why-card">
+                      <div class="why-card-subtitle">For Businesses</div>
+                      <h3 class="why-card-title">Scale Your Content</h3>
+                      <ul class="why-benefits">
+                          <li>Create internal training videos in bulk</li>
+                          <li>Localize marketing videos into multiple languages</li>
+                          <li>Produce professional video presentations</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="proof-layer">
+          <div class="testimonial-card">
+              <div class="testimonial-quote">
+                  This tool is a game-changer. What used to take our team a week now takes less than an hour. The quality is simply astounding.
+              </div>
+              <div class="testimonial-author">
+                  <div class="testimonial-avatar">AC</div>
+                  <div class="testimonial-info">
+                      <h4>Alex Chen</h4>
+                      <p>Head of Digital Marketing at NovaCorp</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="cta-layer">
+          <h2 class="cta-question">Ready to Tell Your Story?</h2>
+          <a href="#" class="cta-button">
+              Start Creating Your First Video for Free
+          </a>
+      </div>
+</section>
 
   </main>
   <section class="pt-5" style="background-color: #000000;">
@@ -291,6 +358,116 @@
       direction: "alternate",
       loop: true,
     });
+// Create animated particles
+function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (3 + Math.random() * 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            initializeVideo();
+            
+            // Observe all cards for scroll animations
+            const cards = document.querySelectorAll('.toolkit-card, .why-card, .testimonial-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
+
+        // Video functionality
+        function initializeVideo() {
+            const video = document.getElementById('demoVideo');
+            const overlay = document.getElementById('videoOverlay');
+            const playButton = document.getElementById('playButton');
+            const pauseBtn = document.getElementById('pauseBtn');
+            const muteBtn = document.getElementById('muteBtn');
+            const fullscreenBtn = document.getElementById('fullscreenBtn');
+            
+            // Play button click
+            playButton.addEventListener('click', () => {
+                video.play();
+                overlay.classList.add('hidden');
+            });
+            
+            // Video ended - show overlay again
+            video.addEventListener('ended', () => {
+                overlay.classList.remove('hidden');
+                playButton.innerHTML = '<i class="fas fa-redo" style="color: white; font-size: 1.5rem;"></i>';
+            });
+            
+            // Pause/Play control
+            pauseBtn.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                    pauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    video.pause();
+                    pauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            
+            // Mute/Unmute control
+            muteBtn.addEventListener('click', () => {
+                video.muted = !video.muted;
+                muteBtn.innerHTML = video.muted ? 
+                    '<i class="fas fa-volume-mute"></i>' : 
+                    '<i class="fas fa-volume-up"></i>';
+            });
+            
+            // Fullscreen control
+            fullscreenBtn.addEventListener('click', () => {
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) {
+                    video.msRequestFullscreen();
+                }
+            });
+            
+            // Auto-play on hover (optional)
+            video.addEventListener('mouseenter', () => {
+                if (video.paused && !overlay.classList.contains('hidden')) {
+                    // Optional: auto-preview on hover
+                }
+            });
+        }
+
+        // Play button interaction
+        document.querySelector('.play-button').addEventListener('click', () => {
+            alert('Video demo sẽ được phát ở đây!');
+        });
+
   </script>
   <script>
     document.getElementById("clearBtn").addEventListener('click', function () {
