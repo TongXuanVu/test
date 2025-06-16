@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(err => console.error("Fetch error: ", err));
 })
 // Auto logout when idle
-const MAX_IDLE_TIME = 10000000 * 1000; 
+const MAX_IDLE_TIME = 30 * 60 * 1000; 
 let idleTimer;
 
 function resetIdleTimer() {
